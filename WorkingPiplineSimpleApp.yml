@@ -2,11 +2,18 @@ stages:
 
   - stage: BuildServices
 
-  pool:
-    vmImages: ubuntu-lates
+    pool:
+      vmImages: ubuntu-lates
 
-  jobs:
-  -job: BuildDocker_SalesBookLB
-  displayName: Build Docker Image for SalesBook.LB app
+    jobs:
+    - job: BuildDocker_SalesBookLB
+      displayName: Build Docker Image for SalesBook.LB app
+      steps:
 
-  step:
+      - task: Docker@2
+        inputs:
+          command: 'buildAndPush'
+          Dockerfile: '**/Dockerfile'
+          tags: |
+            $(Build.BuildId)
+            lates
