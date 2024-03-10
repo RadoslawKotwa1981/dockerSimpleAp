@@ -3,7 +3,7 @@ stages:
   - stage: BuildServices
 
     pool:
-      vmImages: ubuntu-lates
+      vmImages: ubuntu-latest
 
     jobs:
     - job: BuildDocker_SalesBookLB
@@ -16,4 +16,4 @@ stages:
           Dockerfile: '**/Dockerfile'
           tags: |
             $(Build.BuildId)
-            lates
+            latest
